@@ -78,6 +78,57 @@
             opacity: 1;
             transform: translateY(0);
         }
+
+        /* Modal Styles */
+        .modal {
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s ease;
+        }
+        .modal:not(.hidden) {
+            opacity: 1;
+            visibility: visible;
+        }
+        .modal-content {
+            background: var(--navy);
+            padding: 30px;
+            border-radius: 8px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 80vh;
+            overflow-y: auto;
+            color: white;
+            position: relative;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .modal-content img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+        .close {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 28px;
+            cursor: pointer;
+            color: var(--gold);
+        }
+        .close:hover {
+            color: white;
+        }
     </style>
 </head>
 <body>
@@ -170,7 +221,7 @@
                     </div>
                     <h3 class="text-2xl text-white mb-4">LEPSCORP Tech</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">Revolutionizing digital infrastructure through AI-driven insights and aerospace precision.</p>
-                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline">LEARN MORE</a>
+                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline learn-more" data-modal="modal-tech">LEARN MORE</a>
                 </div>
 
                 <!-- Pharma Division -->
@@ -180,7 +231,7 @@
                     </div>
                     <h3 class="text-2xl text-white mb-4">LEPSCORP Pharma</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">Advancing global longevity with ethically sourced bio-technologies and medical breakthroughs.</p>
-                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline">LEARN MORE</a>
+                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline learn-more" data-modal="modal-pharma">LEARN MORE</a>
                 </div>
 
                 <!-- Manufacturing -->
@@ -190,7 +241,7 @@
                     </div>
                     <h3 class="text-2xl text-white mb-4">LEPSCORP Industries</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">Heavy manufacturing with a light footprint, creating the skeletal structures of modern cities.</p>
-                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline">LEARN MORE</a>
+                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline learn-more" data-modal="modal-industries">LEARN MORE</a>
                 </div>
 
                 <!-- Food Production -->
@@ -200,12 +251,113 @@
                     </div>
                     <h3 class="text-2xl text-white mb-4">LEPSCORP Organics</h3>
                     <p class="text-gray-400 text-sm leading-relaxed mb-6 font-light">Curating the future of nutrition with sustainable, artisanal-grade food production cycles.</p>
-                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline">LEARN MORE</a>
+                    <a href="#" class="mt-auto text-xs text-gold tracking-widest hover:underline learn-more" data-modal="modal-organics">LEARN MORE</a>
                 </div>
 
             </div>
         </div>
     </section>
+
+    <!-- Modals -->
+    <!-- Tech Modal -->
+    <div id="modal-tech" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="text-3xl text-gold mb-4 serif">LEPSCORP Tech</h2>
+            <img src="https://images.unsplash.com/photo-1558494949-ef010cbdcc31?auto=format&fit=crop&q=80&w=1000" alt="LEPSCORP Tech Data Center">
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                LEPSCORP Tech is at the forefront of digital transformation, providing cutting-edge AI-driven solutions and aerospace-precision infrastructure. Our proprietary quantum computing platforms and neural network architectures have revolutionized industries from autonomous vehicles to predictive analytics.
+            </p>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                With over 500 patents in machine learning and distributed systems, we've partnered with Fortune 500 companies to deploy scalable cloud solutions that process exabytes of data daily. Our commitment to ethical AI ensures that innovation serves humanity's greatest challenges.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div>
+                    <div class="text-2xl text-gold serif">500+</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">AI Patents</div>
+                </div>
+                <div>
+                    <div class="text-2xl text-gold serif">99.99%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">Uptime SLA</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Pharma Modal -->
+    <div id="modal-pharma" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="text-3xl text-gold mb-4 serif">LEPSCORP Pharma</h2>
+            <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?auto=format&fit=crop&q=80&w=1000" alt="LEPSCORP Pharma Research Lab">
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                LEPSCORP Pharma pioneers breakthrough therapies through ethically sourced bio-technologies and cutting-edge medical research. Our CRISPR-based gene editing platforms and personalized medicine protocols have extended lifespans and cured previously intractable diseases.
+            </p>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                Operating 12 state-of-the-art research facilities worldwide, we've developed 47 FDA-approved drugs in the last decade alone. Our commitment to sustainable sourcing ensures that every compound is derived from renewable, traceable origins, setting new standards for pharmaceutical excellence.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div>
+                    <div class="text-2xl text-gold serif">47</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">FDA Approvals</div>
+                </div>
+                <div>
+                    <div class="text-2xl text-gold serif">12</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">Research Labs</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Industries Modal -->
+    <div id="modal-industries" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="text-3xl text-gold mb-4 serif">LEPSCORP Industries</h2>
+            <img src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=1000" alt="LEPSCORP Industries Manufacturing">
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                LEPSCORP Industries leads heavy manufacturing with unparalleled precision and environmental consciousness. Our automated foundries and smart factories produce structural components for skyscrapers, bridges, and infrastructure projects worldwide, all while maintaining a carbon-neutral footprint.
+            </p>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                Utilizing proprietary alloy formulations and AI-optimized production lines, we've constructed the framework for over 200 major urban developments. Our zero-waste protocols and renewable energy integration make us the gold standard in sustainable industrial production.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div>
+                    <div class="text-2xl text-gold serif">200+</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">Major Projects</div>
+                </div>
+                <div>
+                    <div class="text-2xl text-gold serif">0</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">Carbon Footprint</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Organics Modal -->
+    <div id="modal-organics" class="modal hidden">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 class="text-3xl text-gold mb-4 serif">LEPSCORP Organics</h2>
+            <img src="https://images.unsplash.com/photo-1500651230702-0e2d8a49d4ad?auto=format&fit=crop&q=80&w=1000" alt="LEPSCORP Organics Sustainable Farm">
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                LEPSCORP Organics redefines food production through sustainable, artisanal-grade farming cycles. Our vertical farming towers and precision agriculture systems yield nutrient-dense crops year-round, feeding millions while restoring ecosystems.
+            </p>
+            <p class="text-gray-300 mb-4 leading-relaxed">
+                Spanning 50,000 acres of regenerative farmland, we've developed proprietary seed varieties that thrive in controlled environments. Our blockchain-traced supply chain ensures transparency from seed to table, while our carbon-sequestering practices actively combat climate change.
+            </p>
+            <div class="grid grid-cols-2 gap-4 mt-6">
+                <div>
+                    <div class="text-2xl text-gold serif">50k</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">Acres Farmed</div>
+                </div>
+                <div>
+                    <div class="text-2xl text-gold serif">100%</div>
+                    <div class="text-xs text-gray-400 uppercase tracking-widest">Traceable Supply</div>
+                </div>
+            </div>
+        </div>
+    </div>
 
     <!-- Stats / Global Presence Section -->
     <section class="py-20 bg-gold text-navy text-center px-6">
@@ -280,12 +432,12 @@
                 LEPS<span class="text-gold">CORP</span>
             </div>
             <div class="flex space-x-6 text-gray-500">
-                <a href="#" class="hover:text-gold transition-colors"><i data-lucide="linkedin" size="20"></i></a>
-                <a href="#" class="hover:text-gold transition-colors"><i data-lucide="twitter" size="20"></i></a>
-                <a href="#" class="hover:text-gold transition-colors"><i data-lucide="globe" size="20"></i></a>
+                <a href="https://www.linkedin.com/in/jeffy-lepatan-a1b6508" class="hover:text-gold transition-colors"><i data-lucide="linkedin" size="20"></i></a>
+                <a href="https://www.facebook.com/jeffy.d.lepatan" class="hover:text-gold transition-colors"><i data-lucide="facebook" size="20"></i></a>
+                <a href="mailto:jeffylepatan@gmail.com" class="hover:text-gold transition-colors"><i data-lucide="mail" size="20"></i></a>
             </div>
             <div class="text-[10px] text-gray-600 uppercase tracking-widest">
-                &copy; 2024 LEPSCORP Global Holdings. All Rights Reserved.
+                &copy; 2012 LEPSCORP Global Holdings. All Rights Reserved.
             </div>
         </div>
     </footer>
@@ -353,6 +505,29 @@
                 form.style.display = 'block';
                 form.reset();
             }, 5000);
+        });
+
+        // Modal Functionality
+        document.querySelectorAll('.learn-more').forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const modalId = link.getAttribute('data-modal');
+                document.getElementById(modalId).classList.remove('hidden');
+            });
+        });
+
+        document.querySelectorAll('.close').forEach(closeBtn => {
+            closeBtn.addEventListener('click', () => {
+                closeBtn.closest('.modal').classList.add('hidden');
+            });
+        });
+
+        document.querySelectorAll('.modal').forEach(modal => {
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.classList.add('hidden');
+                }
+            });
         });
     </script>
 </body>
